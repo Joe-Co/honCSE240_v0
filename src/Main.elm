@@ -1,61 +1,37 @@
--- A text input for reversing text. Very useful!
---
--- Read how it works:
---   https://guide.elm-lang.org/architecture/text_fields.html
---
-
-module Main exposing (..)
-
-import Browser
-import Html exposing (Html, Attribute, div, input, text)
-import Html.Attributes exposing (..)
-import Html.Events exposing (onInput)
 
 
+--  elm make Main.elm --optimize --output=main.js
+module Main exposing(..)
 
--- MAIN
+import Html exposing (Html)
+import Svg exposing (..)
+import Svg.Attributes exposing (..)
 
 
+main : Html msg
 main =
-  Browser.sandbox { init = init, update = update, view = view }
-
-
-
--- MODEL
-
-
-type alias Model =
-  { content : String
-  }
-
-
-init : Model
-init =
-  { content = "" }
-
-
-
--- UPDATE
-
-
-type Msg
-  = Change String
-
-
-update : Msg -> Model -> Model
-update msg model =
-  case msg of
-    Change newContent ->
-      { model | content = newContent }
-
-
-
--- VIEW
-
-
-view : Model -> Html Msg
-view model =
-  div []
-    [ input [ placeholder "Text to reverse", value model.content, onInput Change ] []
-    , div [] [ text (String.reverse model.content) ]
+  svg
+    [ viewBox "0 0 400 400"
+    , width "400"
+    , height "400"
+    ]
+    [ circle
+        [ cx "50"
+        , cy "50"
+        , r "40"
+        , fill "red"
+        , stroke "black"
+        , strokeWidth "3"
+        ]
+        []
+    , text_
+        [ x "130"
+        , y "130"
+        , fill "black"
+        , textAnchor "middle"
+        , dominantBaseline "central"
+        , transform "rotate(-45 130,130)"
+        ]
+        [ text "Welcome to Shapes Club"
+        ]
     ]
