@@ -4447,6 +4447,18 @@ var $author$project$Main$main = A2(
 				]),
 			_List_Nil),
 			A2(
+			$elm$svg$Svg$circle,
+			_List_fromArray(
+				[
+					$elm$svg$Svg$Attributes$cx('100'),
+					$elm$svg$Svg$Attributes$cy('200'),
+					$elm$svg$Svg$Attributes$r('20'),
+					$elm$svg$Svg$Attributes$fill('blue'),
+					$elm$svg$Svg$Attributes$stroke('black'),
+					$elm$svg$Svg$Attributes$strokeWidth('3')
+				]),
+			_List_Nil),
+			A2(
 			$elm$svg$Svg$text_,
 			_List_fromArray(
 				[
