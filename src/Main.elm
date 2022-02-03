@@ -6,10 +6,76 @@ module Main exposing(..)
 import Html exposing (Html)
 import Svg
 import Svg.Attributes as Att
+import Browser
+import Http
 
 
-main : Html msg
+
+-- MAIN
+
+
 main =
+  Browser.element
+    { init = init
+    , update = update
+    , subscriptions = subscriptions
+    , view = view
+    }
+
+
+
+-- MODEL
+
+
+type Model
+  = Loading
+  | Done
+
+
+init : () -> (Model, Cmd Msg)
+init _ =
+  ( Loading
+  , Http.get
+      { url = "https://elm-lang.org/assets/public-opinion.txt"
+      , expect = Http.expectString GotText
+      }
+  )
+
+
+
+-- UPDATE
+
+
+type Msg
+  = GotText (Result Http.Error String)
+
+
+update : Msg -> Model -> (Model, Cmd Msg)
+update msg model =
+  (Done, Cmd.none)
+
+
+
+-- SUBSCRIPTIONS
+
+
+subscriptions : Model -> Sub Msg
+subscriptions model =
+  Sub.none
+
+
+
+-- VIEW
+
+
+view : Model -> Html Msg
+view model =
+  basicSvg
+
+
+
+basicSvg : Html msg
+basicSvg =
   Svg.svg
     [ Att.viewBox "0 0 400 400"
     , Att.width "400"
@@ -41,6 +107,6 @@ main =
         , Att.dominantBaseline "central"
         , Att.transform "rotate(-45 130,130)"
         ]
-        [ Svg.text "Welcome to Shapes Club"
+        [ Svg.text "Welcome to Shapes Club, version 4"
         ]
     ]
