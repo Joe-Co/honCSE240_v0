@@ -72,7 +72,21 @@ view : Model -> Html Msg
 view model =
   basicSvg
 
+type Color
+  = Black
+  | White
 
+circle : Int -> Int -> Int -> String -> Svg.Svg msg
+circle x y radius color = 
+  Svg.circle
+    [ Att.cx (String.fromInt x)
+    , Att.cy (String.fromInt y)
+    , Att.r (String.fromInt radius)
+    , Att.fill color
+    , Att.stroke "black"
+    , Att.strokeWidth "3"
+    ]
+    []
 
 basicSvg : Html msg
 basicSvg =
@@ -107,6 +121,6 @@ basicSvg =
         , Att.dominantBaseline "central"
         , Att.transform "rotate(-45 130,130)"
         ]
-        [ Svg.text "Welcome to Shapes Club, version 4"
+        [ Svg.text "Welcome to Shapes Club, version 6"
         ]
     ]

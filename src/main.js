@@ -6182,7 +6182,7 @@ var $author$project$Main$basicSvg = A2(
 				]),
 			_List_fromArray(
 				[
-					$elm$svg$Svg$text('Welcome to Shapes Club, version 4')
+					$elm$svg$Svg$text('Welcome to Shapes Club, version 6')
 				]))
 		]));
 var $author$project$Main$view = function (model) {
